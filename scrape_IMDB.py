@@ -5,10 +5,10 @@ uClient = uReq.urlopen(site)
 page_html = uClient.read()
 uClient.close()
 
-import bs4 
+import bs4                           
 from bs4 import BeautifulSoup 
 
-import pickle
+import pickle                                 # important to save data 
 
 soup = BeautifulSoup(page_html,"html.parser")
 
@@ -28,15 +28,6 @@ dataSet = {
 	'Rating':[]
 
 }
-
-#print(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).text)
-#print(str(int(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).find("strong")['title'].split()[3].replace(',',''))))
-#print(type(rows[0].find("td",{"class":"titleColumn"}).find("a").text))
-#print(rows[1].find("td",{"class":"titleColumn"}).find("span").text)
-#print(rows[0].find("td",{"class":"titleColumn"}).find("div").findAll("span"))
-#print(rows[5].find("td",{"class":"titleColumn"}).find("div").findAll("span")[1].attrs['class'][2])
-#print(rows[4].find("td",{"class":"titleColumn"}).find("div").parent)
-#print(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).text)
 
 
 file = open("csvfile.csv","w+")
@@ -72,30 +63,6 @@ for i in range(len(rows)):
 	file.write(str(dataSet['Name Of Show'][i])+","+str(dataSet['Year Of Release'][i])+","+str(dataSet['Ranking Change_Jump'][i])+","+str(dataSet['Change'][i])+","+str(dataSet['Users_count'][i])+","+str(dataSet['Rating'][i])+"\n")
 
 file.close()	
-
-
-
-	
-'''
-print(dataSet['Rating'])
-print(dataSet['Name Of Show'])
-print(dataSet['Year Of Release'])
-print(dataSet['Ranking Change_Jump'])
-print(dataSet['Change'])
-'''
-
-
-
-
-
-#print(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).text)
-#print(str(int(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).find("strong")['title'].split()[3].replace(',',''))))
-#print(type(rows[0].find("td",{"class":"titleColumn"}).find("a").text))
-#print(rows[1].find("td",{"class":"titleColumn"}).find("span").text)
-#print(rows[0].find("td",{"class":"titleColumn"}).find("div").findAll("span"))
-#print(rows[5].find("td",{"class":"titleColumn"}).find("div").findAll("span")[1].attrs['class'][2])
-#print(rows[4].find("td",{"class":"titleColumn"}).find("div").parent)
-#print(rows[0].find("td",{"class":["ratingColumn","imdbRating"]}).text)
 
 
 site = "http://www.imdb.com/chart/moviemeter"
